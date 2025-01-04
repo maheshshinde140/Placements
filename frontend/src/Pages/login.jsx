@@ -52,7 +52,7 @@ const Login = () => {
         </div>
       </header>
 
-      <div className="flex justify-end p-3">
+      {/* <div className="flex justify-end p-3">
         <a
           href="#"
           className="text-gray-950 font-normal hover:text-blue-500 flex items-center group"
@@ -60,7 +60,7 @@ const Login = () => {
           <FaUserCog className="mr-2 text-gray-950 font-semibold group-hover:text-blue-500" />
           Admin login
         </a>
-      </div>
+      </div> */}
 
       <main className="flex-grow flex justify-center items-center relative">
         <div className="absolute inset-0 flex justify-center items-center -z-10">

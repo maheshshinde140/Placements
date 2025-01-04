@@ -21,6 +21,10 @@ const StatusPage = () => {
         }
     }, [error]);
 
+    const sortedJobs = jobs
+    ? [...jobs].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    : [];
+
     return (
         <div className="relative flex flex-col flex-1 bg-[#A3B5C0] min-h-screen rounded-l-[35px]">
             <div className="sticky flex items-center">
@@ -62,8 +66,8 @@ const StatusPage = () => {
                     <p className="text-center text-lg text-gray-600">Loading jobs...</p>
                 ) : (
                     <div className="w-full">
-                        {jobs.length > 0 ? (
-                            jobs
+                        {sortedJobs.length > 0 ? (
+                            sortedJobs
                                 .filter((job) => job.type.toLowerCase() === activeForm)
                                 .map((job) => <JobCard key={job._id} job={job} />)
                         ) : (

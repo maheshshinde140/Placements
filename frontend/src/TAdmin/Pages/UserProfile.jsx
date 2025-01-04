@@ -136,7 +136,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
   const dispatch = useDispatch();
-  const { student, status,token, error } = useSelector((state) => state.user);
+  const { student, status, error } = useSelector((state) => state.user);
   
    
   useEffect(() => {

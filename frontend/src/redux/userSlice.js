@@ -63,11 +63,11 @@ export const logoutUser = createAsyncThunk(
 export const fetchUserById = createAsyncThunk(
   "user/fetchUser ById",
   async (userId, { getState, rejectWithValue }) => {
-    const { user } = getState().user;
+    const { user, student } = getState().user;
 
     // Avoid API call if the user data for the given ID is already present
-    if (user && user._id === userId) {
-      return user; // Return cached user data
+    if (student && student._id === userId) {
+      return student; // Return cached user data
     }
 
     try {
@@ -176,7 +176,7 @@ const userSlice = createSlice({
     token: Cookies.get("mpsp") || null, // Fetch token from cookies
     profileCompletionDetails: [],
     collegeUsers: [],
-    student: [],
+    student: null,
     createdStudent: null,
     status: "idle",
     error: null,
@@ -185,7 +185,7 @@ const userSlice = createSlice({
     resetState: (state) => {
       state.user = null;
       state.token = null;
-       state.student  = [];
+       state.student  = null;
       state.profileCompletionDetails = []; 
       state.collegeUsers = [];
       state.createdStudent = null;

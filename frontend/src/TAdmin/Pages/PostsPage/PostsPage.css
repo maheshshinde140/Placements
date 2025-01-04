@@ -1,270 +1,338 @@
 .posts{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: #A3B5C0;
-    min-height: 100vh;
-    border-start-start-radius: 35px;
-    border-end-start-radius: 35px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #A3B5C0;
+  min-height: 100vh;
+  border-start-start-radius: 35px;
+  border-end-start-radius: 35px;
 
 }
+
 .heading-main{
-    font-size: 28px;
-    font-weight: 700;
-    padding: 10px;
-    margin-left: 30px;
-    margin-top: 10px;
-    color: rgb(22, 22, 59);
-}
-
-.job-intern-main{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-    width: 92%;
-    margin-left: 3.5%;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 10px;
+  margin-left: 30px;
+  margin-top: 10px;
+  color: rgb(22, 22, 59);
+  
 }
 
 
-.job-intern-main .nav-post {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 15px;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-    height: 30px;
-    border-bottom: 2px solid transparent;
-  }
-  
-  .job-intern-main .nav-post:hover {
-    background-color: rgba(80, 129, 167, 0.278);
-  }
-  
-  .job-intern-main .nav-post.active-nav {
-    border-bottom: 2px solid rgb(22, 22, 59);
-  }
-  
-  .job-intern-main h2 {
-    font-size: 18px;
-    font-family: raleway;
-    font-weight: 600;
-    color: rgb(22, 22, 59);
-  }
-  
-  .job-intern-main .icon {
-    font-size: 22px;
-    color: rgb(22, 22, 59);
-  }
-
-  .job-intern-main span{ 
-    height: 30px;
-    width: 2px;
-    border-radius: 20px;
-    /* background-color: rgb(22, 22, 59); */
-    background-color: rgba(33, 86, 105, 0.758);
-  }
-  
-.job-main{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 92%;
-    margin-left: 4%;
-    height: 400px;
-}
-.job-main .job-info{
-    position: relative;
-    display: flex;
-    margin-left: 20px;
-}
-.job-logo-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 130px;
-    /* border: 2px solid rgb(22, 22, 59); */
-    border-left: 2px solid rgba(33, 86, 105, 0.758);
-    border-bottom: 2px solid rgba(33, 86, 105, 0.758);
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 10px;
+.job-intern-main {
+  position: relative;
+  justify-items: center;
+  /* padding: 20px 15px; */
+  height: 30px;
+  margin-bottom: 40px;
 }
 
 
+.job-intern-main h2 {
+  gap: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  font-weight: 700;
+  color: rgb(22, 22, 59);
+  border-bottom: 2px solid #222259;
+  border-radius: 5px;
 
-.job-logo {
-    width: 120px;
-    height: 120px;
-    object-fit: contain; 
-    border-radius: 20px;
-    /* border: 2px solid rgba(33, 86, 105, 0.758); */
-    /* border-left: 2px solid rgba(33, 86, 105, 0.758);
-    border-bottom: 2px solid rgba(33, 86, 105, 0.758); */
-    padding: 5px;
-    /* background-color: red; */
-  }
-  
-  .add-logo-icon {
-    font-size: 50px;
-    color: rgba(33, 86, 105, 0.758);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 130px;
-    /* border-bottom: 2px solid rgba(33, 86, 105, 0.758); Optional: Border for the add image icon */
-    /* border-right: 2px solid rgba(33, 86, 105, 0.758); */
-    /* border-top: 2px solid rgba(33, 86, 105, 0.758); */
-    /* border-left: 2px solid rgba(33, 86, 105, 0.758); */
-    border-radius: 20px;
-    background: transparent;
-    /* z-index: 1000; */
-  }
-  
-  .add-logo-icon:hover {
-    background-color: rgba(80, 129, 167, 0.278);
-  }
-
-
-
-
-
-
-.job-name-role{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 100%;
-    justify-content: space-evenly;
 }
+
+.job-intern-main h2 .icon {
+  font-size: 24px;
+  color: rgb(22, 22, 59);
+}
+
+
+.job-info{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  /* background: #000000a5; */
+  padding-left: 20px;
+}
+
 
 .job-name-role label{
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 20px;
-    color: rgb(22, 22, 59);
+  font-size: 18px;
+  font-weight: 500;
+  /* margin-left: 20px; */
+  color: rgb(22, 22, 59);
 }
 
 .job-name-role input{
-    font-size: 18px;
-    margin-left: 10px;
-    width: 76%;
-    padding: 5px;
-    padding-left: 10px;
-    border-bottom: 2px solid rgba(33, 86, 105, 0.758);
-    background: transparent;
-    border-radius: 5px;
-    color: rgb(22, 22, 59);
+  font-size: 18px;
+  margin-left: 10px;
+  width: 65%;
+  padding: 5px;
+  padding-left: 10px;
+  border-bottom: 2px solid rgba(33, 86, 105, 0.758);
+  background: transparent;
+  border-radius: 5px;
+  color: rgb(22, 22, 59);
 }
 
 .job-name-role input::placeholder{
-    color: rgba(33, 86, 105, 0.758);
-  }
+  color: rgba(33, 86, 105, 0.758);
+}
 .job-name-role input:focus{
-    outline: none;
-    border-bottom: 2px solid rgb(22, 22, 59);
-    background: transparent;
+  outline: none;
+  border-bottom: 2px solid rgb(22, 22, 59);
+  background: transparent;
 }
 
 .job-des-loc input{
-    width: 30%;
+  width: 23%;
 }
 .job-name input{
-    width: 80%;
+  width: 70%;
+}
+
+.job-des-loc select {
+background-color: transparent;
+font-size: 17px;
+color: #16153b;
+border-bottom: 2px solid #215669c1;
+border-radius: 0.375rem; /* rounded corners */
+padding: 0.25rem 0.5rem;
+}
+
+.job-des-loc select:focus {
+outline: none;
+border-color: rgb(22, 22, 59);
+}
+
+.job-des-loc option {
+background-color: #A3B5C0; /* default background */
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+color: #16153b; /* default text color */
+border-radius: 5px;
+}
+
+.job-des-loc option:hover {
+background-color: #215669 !important; /* Change the background color when hovering */
+color: #fff !important; /* Change text color when hovering */
 }
 
 
 .job-desc{
-    margin-top: 20px;
-    /* background-color: red; */
-    height: 250px;
-    max-height: 250px;
-    /* position: relative; */
+  margin-top: 20px;
+  /* background-color: aqua; */
+  height: auto;
+  min-height: 340px;
+  /* max-height: 0px; */
 }
 
 .job-desc label{
-    /* position: absolute; */
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 20px;
-    margin-top: 15px;
-    color: rgb(22, 22, 59);
-    top: -25px;
-    left: 0;
+  /* position: absolute; */
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 20px;
+  margin-top: 15px;
+  color: rgb(22, 22, 59);
+  top: -25px;
+  left: 0;
 }
 
-.job-desc textarea{
-    padding: 10px;
-    font-size: 18px;
-    margin-left: 20px;
-    margin-top: 20px;
-    padding: 2px;
-    padding-left: 10px;
-    border: 2px solid rgba(33, 86, 105, 0.758);
-    background: transparent;
-    border-radius: 5px;
-    color: rgb(22, 22, 59);
-    overflow: auto;
+
+
+.job-desc ReactQuill::-webkit-scrollbar {
+  display: none;
 }
 
-.job-desc textarea::-webkit-scrollbar {
-    display: none;
-}
-  
-/* For other browsers (Firefox) */
-.job-desc textarea {
-    scrollbar-width: none; /* Firefox-specific */
+.job-desc ReactQuill {
+  scrollbar-width: none;
 }
 
-.job-desc .job-description{
-    width: 88%;
-    height: 200px;
+.job-description{
+  margin-top: 8px;
+  width: 92%;
+  height: 290px;
+  font-size: 18px;
+  margin-left: 20px;
+  border: 2px solid rgba(33, 86, 105, 0.758);
+  background: transparent;
+  border-radius: 10px;
+  color: rgb(22, 22, 59);
+  overflow: auto;
 }
 
-.job-desc textarea::placeholder{
-    color: rgba(33, 86, 105, 0.758);
-    top: 0;
-  }
-.job-desc textarea:focus{
-    outline: none;
-    border-bottom: 2px solid rgb(22, 22, 59);
-    background-color: rgba(63, 124, 146, 0.341); 
+/* .job-desc ReactQuill::placeholder{
+  color: rgba(33, 86, 105, 0.758);
+  top: 0;
+} */
+/* .job-desc ReactQuill:focus{
+  outline: none;
+  border-bottom: 2px solid rgb(22, 22, 59);
+  background-color: rgba(63, 124, 146, 0.341); 
+}  */
+
+
+.job-description .ql-container {
+position: sticky;
+border-radius: 5px !important; 
+border: none !important;
+padding: 0 !important;
+color: rgba(22, 22, 59) !important;
+height: 247px;
+
 }
+
+.job-description .ql-toolbar {
+border-bottom: 1px solid rgba(33, 86, 105, 0.758) !important; /* Change to your desired color */
+border-top: none !important;
+border-left: none !important;
+border-right: none !important;
+border-radius: 6px !important;
+padding: 4px !important;
+color: rgba(33, 86, 105, 0.758) !important;
+height: 38px;
+}
+
+/* Override SVG fill color (default icons) */
+.job-description .ql-formats button svg {
+fill: rgba(33, 86, 105, 0.758) !important; /* Ensure icon color matches */
+transition: fill 0.3s ease;
+}
+
+/* Change SVG fill color on hover */
+.job-description .ql-formats button:hover svg {
+fill: rgba(22, 22, 59) !important; /* Change icon color on hover */
+}
+
+/* Active SVG icon color */
+.job-description .ql-formats button.ql-active svg {
+fill: #222259 !important; /* Active state icon color */
+}
+
+.job-description .ql-editor {
+font-size: 14px !important;
+color: rgba(22, 22, 59) !important;
+/* background-color: wheat !important; */
+}
+.job-description .ql-editor data-placeholder{
+color: rgba(33, 86, 105, 0.758) !important;
+}
+
+
+.job-description .ql-toolbar button {
+color: rgba(33, 86, 105, 0.758) !important; 
+background: transparent;
+border: none;
+margin-right: 5px;
+transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+.job-description .ql-toolbar button.ql-active {
+color: #222259 !important;
+background: #86868680 !important; 
+border-radius: 8px !important;
+}
+
+.job-description .ql-toolbar button:hover {
+color: rgba(22, 22, 59) !important; 
+background: #f1f1f13e !important;
+border-radius: 8px !important; 
+}
+
+
+.job-description .ql-toolbar .ql-picker {
+color: rgba(33, 86, 105, 0.758) !important;
+background: transparent;
+border: 1px solid rgba(33, 86, 105, 0.758) !important;
+border-radius: 5px; 
+padding: 5px;
+transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.job-description .ql-toolbar .ql-picker:hover {
+background: #ffffff38;
+color: #222259; 
+border-color: #222259;
+}
+
+
+.job-description .ql-toolbar .ql-picker-options {
+backdrop-filter: blur(6px);
+background:#ffffff43;
+border: 1px solid rgb(33, 86, 105) !important;
+border-radius: 5px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.job-description .ql-toolbar .ql-picker-options .ql-picker-item {
+color: rgba(33, 86, 105, 0.758); 
+padding: 5px 10px;
+cursor: pointer; 
+transition: background-color 0.3s ease, color 0.3s ease !important;
+border-radius: 8px !important;
+}
+
+.job-description .ql-toolbar .ql-picker-options .ql-picker-item:hover {
+background: #ffffff59 !important;
+color: #222259 !important; 
+
+}
+
+/* .job-description .ql-toolbar .ql-picker-options .ql-picker-item.ql-selected {
+outline: none;
+background: #ffffff4b !important;
+color: #222259 !important;
+} */
+
+.job-description .ql-toolbar .ql-picker-label {
+font-size: 14px;
+color: rgba(33, 86, 105, 0.758) !important;
+display: flex; 
+align-items: center;
+justify-content: space-between;
+border: none !important;
+}
+
+.job-description .ql-toolbar .ql-picker-label::after {
+border-color: rgba(33, 86, 105, 0.758) transparent transparent transparent !important;
+}
+
+
+
+.post-next-button{
+width: 100%;
+/* background: #000; */
+display: flex;
+justify-content: flex-end;
+/* justify-items: end; */
+padding-right: 20px;
+padding-bottom: 30px;
+}
+
 
 .next-button{
-    position: absolute;
-    right: 10%;
-    bottom: -60px;
-    padding: 2px 20px;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 500;
-    width: 120px;
-    height: 35px;
-    background-color: #3e79a7;
-    color: rgb(192, 192, 192);
-    cursor: pointer;
+  /* position: absolute; */
+  right: 10%;
+  bottom: -60px;
+  padding: 2px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  width: 120px;
+  height: 35px;
+  background-color: #3e79a7;
+  color: rgb(192, 192, 192);
+  cursor: pointer;
 }
 
 .job-main button:hover {
-    background-color: #21537a;
-  }
-
-
- 
-.intern-des-loc input{
-    width: 25%;
-}
-.intern-name input{
-    width: 70%;
+  background-color: #21537a;
 }
 
 
@@ -278,182 +346,182 @@
 
 /* CSS (PostsPage.css) */
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .popup-content {
-    /* padding: 20px; */
-    width: 600px;
-    max-height: 80%;
-    overflow-y: auto;
-    position: relative;
-    width: 500px; 
-    height: 700px; 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(5%, -50%);
-    /* border-radius: 20px;  */
-    border-start-start-radius: 30px;
-    border-end-start-radius: 30px;
-    border-start-end-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    overflow: auto; 
-    padding: 20px; 
-    z-index: 1001; 
-    background-color: #c4ced38e;
-    /* backdrop-filter: blur(2px);   */
+  /* padding: 20px; */
+  width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  width: 500px; 
+  height: 700px; 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(5%, -50%);
+  /* border-radius: 20px;  */
+  border-start-start-radius: 30px;
+  border-end-start-radius: 30px;
+  border-start-end-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: auto; 
+  padding: 20px; 
+  z-index: 1001; 
+  background-color: #c4ced38e;
+  /* backdrop-filter: blur(2px);   */
 }
 
 
 /* Hide scrollbar for Webkit-based browsers (Chrome, Edge, Safari) */
 .popup-content::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
-  
+
 /* For other browsers (Firefox) */
 .popup-content {
-    scrollbar-width: none; /* Firefox-specific */
+  scrollbar-width: none; /* Firefox-specific */
 }
-  
+
 /* Optional: Add padding to prevent content from clipping due to hidden scrollbars */
 .popup-content {
-    padding-right: 15px; /* Adjust as needed */
+  padding-right: 15px; /* Adjust as needed */
 }
 
 .popup-header{
-    /* position: sticky; */
-    /* background-color: red; */
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    margin-bottom: 10px;
-    /* background-color: #c4ced3b7; */
+  /* position: sticky; */
+  /* background-color: red; */
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+  /* background-color: #c4ced3b7; */
 }
 .popup-header h2{
-    color: rgb(22, 22, 59);
-    font-size: 22px;
-    font-weight: 700;
+  color: rgb(22, 22, 59);
+  font-size: 22px;
+  font-weight: 700;
 }
-  
+
 .close-btn {
-    /* position: absolute; */
-    position: fixed;
-    top: 2px;
-    right: 15px;
-    /* background: none; */
-    /* border: none; */
-    font-size: 20px;
-    cursor: pointer;
-    font-size: 28px;
-    font-weight: 700;
-    color: rgb(22, 22, 59);
-    border-radius: 50%;
-    /* background-color: #6992a7; */
-    /* transform: translate(50%, 50%); */
+  /* position: absolute; */
+  position: fixed;
+  top: 2px;
+  right: 15px;
+  /* background: none; */
+  /* border: none; */
+  font-size: 20px;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgb(22, 22, 59);
+  border-radius: 50%;
+  /* background-color: #6992a7; */
+  /* transform: translate(50%, 50%); */
 }
-  
-  .filter-group {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .filter-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-right: 10px;
-  }
-  
-  .filter-group button {
-    margin: 5px 5px 0 0;
-    padding: 2px 10px;
-    cursor: pointer;
-    /* border: 1px solid rgba(135, 167, 177, 0.758);
-    background: rgba(122, 165, 180, 0.341); */
-    background: transparent;
-    border-bottom: 2px solid rgba(60, 118, 138, 0.963);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    /* font-weight: 500; */
-  }
-  
-  .filter-group button.selected {
-    font-weight: 500;
-    background: #3e79a7;
-    /* border: none; */
-    color: rgb(218, 218, 218);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .filter-group input {
-    width: 50%;
-    padding: 8px;
-    border-bottom: 2px solid rgba(60, 118, 138, 0.963);
-    border-radius: 8px;
-    background: transparent;
-    color: rgb(22, 22, 59);
-    font-weight: 500;
-  }
-  .filter-group input::placeholder{
-    /* color: rgb(122, 165, 180); */
-    color: rgb(34, 86, 105);
-    font-weight: 400;
-  }
+
+.filter-group {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.filter-group button {
+  margin: 5px 5px 0 0;
+  padding: 2px 10px;
+  cursor: pointer;
+  /* border: 1px solid rgba(135, 167, 177, 0.758);
+  background: rgba(122, 165, 180, 0.341); */
+  background: transparent;
+  border-bottom: 2px solid rgba(60, 118, 138, 0.963);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  /* font-weight: 500; */
+}
+
+.filter-group button.selected {
+  font-weight: 500;
+  background: #3e79a7;
+  /* border: none; */
+  color: rgb(218, 218, 218);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.filter-group input {
+  width: 50%;
+  padding: 8px;
+  border-bottom: 2px solid rgba(60, 118, 138, 0.963);
+  border-radius: 8px;
+  background: transparent;
+  color: rgb(22, 22, 59);
+  font-weight: 500;
+}
+.filter-group input::placeholder{
+  /* color: rgb(122, 165, 180); */
+  color: rgb(34, 86, 105);
+  font-weight: 400;
+}
 .filter-group input:focus{
-    outline: none;
-    border-bottom: 2px solid rgb(22, 22, 59);
-    background: transparent;
+  outline: none;
+  border-bottom: 2px solid rgb(22, 22, 59);
+  background: transparent;
 }
 .filter-group input[type="number"]::-webkit-inner-spin-button,
 .filter-group input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+-webkit-appearance: none;
+margin: 0;
 }
 
-  
-  .filter-actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .filter-actions button {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 4px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    height: 35px;
-  }
-  
-  .filter-actions button:last-child {
-    background-color: #4884b3;
-    color: rgb(218, 218, 218);
-  }
-  
-  .filter-actions button:first-child {
-    background: #6c757d;
-    color: white;
-  }
-  
-  .filter-actions button:last-child:hover{
-    background-color: #44769c;
-  }
 
-  .filter-actions button:first-child:hover{
-    background-color: #5a6268;
-  }
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-actions button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 4px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  height: 35px;
+}
+
+.filter-actions button:last-child {
+  background-color: #4884b3;
+  color: rgb(218, 218, 218);
+}
+
+.filter-actions button:first-child {
+  background: #6c757d;
+  color: white;
+}
+
+.filter-actions button:last-child:hover{
+  background-color: #44769c;
+}
+
+.filter-actions button:first-child:hover{
+  background-color: #5a6268;
+}

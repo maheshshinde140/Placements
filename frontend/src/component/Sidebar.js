@@ -78,9 +78,9 @@ const Sidebar = () => {
             </p>
           </div>
         </div>
-        <div className=" justify-center mt-3 font-semibold text-start p-2 items-center space-y-1 mb-3">
-          <h2 className="text-2xl">Hii, {user?.profile?.firstName}!</h2>
-          <p className="text-sm text-gray-400">
+        <div className=" justify-center mt-3 font-semibold text-start p-2 items-center space-y-1 mb-5">
+          <h2 className="text-2xl font-bold">Hii, {user?.profile?.firstName}!</h2>
+          <p className="text-xs text-gray-400">
             Your job is waiting for you!...
           </p>
         </div>
@@ -92,7 +92,7 @@ const Sidebar = () => {
             }`}
           >
             <LayoutDashboard className="h-5 w-5" />
-            Profile
+             <h1 className="text-xl font-bold">Profile</h1>
           </NavLink>
           <NavLink
             to="/internship"
@@ -103,7 +103,7 @@ const Sidebar = () => {
             }`}
           >
             <Briefcase className="h-5 w-5" />
-            Internship
+            <h1 className="text-xl font-bold">Internship</h1>
           </NavLink>
           <NavLink
             to="/job"
@@ -112,7 +112,7 @@ const Sidebar = () => {
             }`}
           >
             <Briefcase className="h-5 w-5" />
-            Job&apos;s
+             <h1 className="text-xl font-bold">Job&apos;s</h1>
           </NavLink>
           <NavLink
             to="/notify"
@@ -121,11 +121,11 @@ const Sidebar = () => {
             }`}
           >
             <Bell className="h-5 w-5" />
-            Help
+             <h1 className="text-xl font-bold">Help</h1>
           </NavLink>
         </nav>
 
-        <div className="mb-4 mt-12 ">
+        <div className=" mt-10 ">
           <div className="relative mx-auto h-40 w-40 transform hover:scale-105 transition-transform duration-200">
             {/* Background Circle */}
             <div className="absolute inset-0 rounded-full border-[2px] border-gray-600 bg-gray-200" />
