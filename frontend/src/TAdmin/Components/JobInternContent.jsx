@@ -63,7 +63,6 @@ const JobInternContent = ({ appliedJobsHistory }) => {
                 <div>
                   <h3 className="text-[17px] font-medium">{job.company}</h3>
                   <p className="text-[16px] font-normal">{job.position}</p>
-
                 </div>
                 <button className="ml-auto bg-[#A6C0CF] text-text-[rgb(22,22,59)] border border-[#84a7bb] rounded-xl px-3 py-1 shadow-md hover:bg-[#84a7bb]">
                   Remove
@@ -102,38 +101,30 @@ const JobInternContent = ({ appliedJobsHistory }) => {
           Applied {jobs.filter((job) => job.selected).length}/{jobs.length}
         </p>
       </div>
-            <div className="w-[48%]">
-                <h2 className="text-[22px] mt-7 mb-2 font-semibold text-gray-700">Internship :</h2>
-                <div className="p-5 bg-[#ffffff38] backdrop-blur-sm shadow-md rounded-2xl w-full max-h-[500px] overflow-y-auto scrollbar-hide">
-                    {(showMoreInternships ? internships : internships.slice(0, 3)).map((internship) => (
-                        <div key={internship.jobId._id} className="mb-5 p-3 relative bg-[#ffffff38] backdrop-blur-md shadow-md rounded-2xl w-full">
-                            <div className="flex items-center">
-                                <img
-                                    src={internship.jobId.logo || "https://via.placeholder.com/50"}
-                                    alt="company-logo"
-                                    className="w-12 h-12 rounded-md mr-2"
-                                />
-                                <div>
-                                    <h3 className="text-[17px] font-medium">{internship.jobId.company}</h3>
-                                    <p className="text-[16px] font-normal">{internship.jobId.title}</p>
-                                </div>
-                                <button className="ml-auto bg-[#A6C0CF] text-[rgb(22,22,59)] border border-[#84a7bb] rounded-lg px-3 py-1 shadow-md hover:bg-[#84a7bb]">Remove</button>
-                            </div>
-                            <div className="mt-2 text-[14px]">
-                                <p><strong>Job Title:</strong> {internship.jobId.title}</p>
-                                <p><strong>Location:</strong> {internship.jobId.location}</p>
-                                <p><strong>Employment Type:</strong> {internship.jobId.type}</p>
-                                <p><strong>About:</strong> {internship.jobId.description}</p>
-                            </div>
-                            <span className="text-green-600 font-bold text-xl absolute bottom-1 right-2">&#10003;</span>
-                        </div>
-                    ))}
-                    <p
-                        onClick={() => setShowMoreInternships(!showMoreInternships)}
-                        className="text-[rgb(64,64,148)] text-center cursor-pointer mt-2 hover:underline"
-                    >
-                        {showMoreInternships ? "See less..." : "See more..."}
 
+      <div className="w-[48%]">
+        <h2 className="text-[22px] mt-7 mb-2  font-semibold  text-gray-700">
+          Internship :
+        </h2>
+        <div className="p-5 bg-[#ffffff38] backdrop-blur-sm shadow-md rounded-2xl w-full max-h-[500px] overflow-y-auto scrollbar-hide">
+          {(showMoreInternships ? internships : internships.slice(0, 3)).map(
+            (internship) => (
+              <div
+                key={internship.id}
+                className="mb-5 p-3 relative bg-[#ffffff38] backdrop-blur-md shadow-md rounded-2xl w-full"
+              >
+                <div className="flex items-center">
+                  <img
+                    src="https://via.placeholder.com/50"
+                    alt="company-logo"
+                    className="w-12 h-12 rounded-md mr-2"
+                  />
+                  <div>
+                    <h3 className="text-[17px] font-medium">
+                      {internship.company}
+                    </h3>
+                    <p className="text-[16px] font-normal">
+                      {internship.position}
                     </p>
                   </div>
                   <button className="ml-auto bg-[#A6C0CF] text-[rgb(22,22,59)] border border-[#84a7bb] rounded-lg px-3 py-1 shadow-md hover:bg-[#84a7bb] ">

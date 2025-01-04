@@ -36,8 +36,6 @@ const Header = ({filterCriteria, onFilterChange, onSearch}) => {
     setShowFilter(false);
   };
 
-  
-
 
   return (
     <>

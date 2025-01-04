@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import Content from "../../Components/Content";
+// import Content from "../../Components/Content";
 import "./PostsPage.css";
 import { MdLibraryAdd } from "react-icons/md";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { MdOutlineAddPhotoAlternate } from "react-icons/md";
-import { createJob } from "../../../redux/jobSlice";
+// import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { createJob, showEligibleStudents } from "../../../redux/jobSlice";
 import ReactQuill from "react-quill"; // Import react-quill
 import "react-quill/dist/quill.snow.css"; // Import quill styles
 
 const PostsPage = () => {
   const [activeForm, setActiveForm] = useState("job");
   const [step, setStep] = useState(1); // Step 1: Form, Step 2: Filters
-
+  const [eligibleStudents, setEligibleStudents] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -42,11 +42,23 @@ const PostsPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  
+    if (name in formData.eligibilityCriteria) {
+      setFormData((prev) => ({
+        ...prev,
+        eligibilityCriteria: {
+          ...prev.eligibilityCriteria,
+          [name]: value,
+        },
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
+  
 
   const clearFilters = () => {
     setFormData((prev) => ({
@@ -88,6 +100,31 @@ const PostsPage = () => {
     });
   };
 
+  const handleShowEligibleStudents = () => {
+    const criteria = {
+      gender: formData.eligibilityCriteria.gender,
+      cgpa: formData.eligibilityCriteria.cgpa,
+      session: formData.eligibilityCriteria.session,
+      tenthPercentage: formData.eligibilityCriteria.tenthPercentage,
+      twelfthPercentage: formData.eligibilityCriteria.twelfthPercentage,
+      polyPercentage: formData.eligibilityCriteria.polyPercentage,
+      backlogs: formData.eligibilityCriteria.currentBacklogs,
+      branches: formData.eligibilityCriteria.branch,
+    };
+
+    dispatch(showEligibleStudents(criteria))
+      .unwrap()
+      .then((response) => {
+        setEligibleStudents(response.students);
+        toast.success("Eligible students fetched successfully!");
+      })
+      .catch((error) => {
+        toast.error(
+          `Error: ${error.message || "Failed to fetch eligible students"}`
+        );
+      });
+  };
+
   const handleDescriptionChange = (value) => {
     setFormData((prev) => ({
       ...prev,
@@ -124,118 +161,87 @@ const PostsPage = () => {
   return (
     <div className="posts">
       <h1 className="heading-main">Internship/Job Posting</h1>
-      <Content />
-      <div className="outer-main">
+      {/* <Content /> */}
+      <div className="w-[92%] h-full mx-auto  overflow-y-auto scrollbar-hide">
         <div className="job-intern-main">
-          <NavLink
-            to="#"
-            className={`nav-post ${activeForm === "job" ? "active-nav" : ""}`}
-            onClick={() => setActiveForm("job")}
-          >
-            <MdLibraryAdd className="icon" />
-            <h2>Post Job</h2>
-          </NavLink>
+          <h2>
+            <MdLibraryAdd className="icon" /> Add Post's
+          </h2>
         </div>
 
-        {activeForm === "job" && (
-          <div className="job-main">
-            <div className="job-info">
-              {/* <div className="job-logo-wrapper">
-                {formData.jobLogo ? (
-                  <img
-                    src={URL.createObjectURL(formData.jobLogo)}
-                    alt="Job Logo"
-                    className="job-logo"
-                  />
-                ) : (
-                  <label htmlFor="job-logo-input" className="add-logo-icon">
-                    <MdOutlineAddPhotoAlternate />
-                  </label>
-                )}
+        <div className="job-main">
+          <div className="job-info job-name-role">
+              <div className="company-name">
+                <label>Company Name:</label>
                 <input
-                  type="file"
-                  id="job-logo-input"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  style={{ display: 'none' }}
-                  className='job-logo-input'
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="Enter Company Name"
                 />
-              </div> */}
-              <div className="job-name-role">
-                <div className="company-name">
-                  <label>Company Name:</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    placeholder="Enter Company Name"
-                  />
-                </div>
-                <div className="job-name">
-                  <label>Job Title:</label>
-                  <input
-                    type="text"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleInputChange}
-                    placeholder="Enter Job Title"
-                  />
-                </div>
-                <div className="job-des-loc">
-                  <label>Type:</label>
-                   <select
-                    name="type"
-                    value={formData.type}
-                    onChange={handleInputChange}
-                    className="flex-1 py-1 px-2 border-b-2 border-[#215669C1] rounded-md bg-transparent text-[rgb(22,22,59)] focus:outline-none placeholder-[#215669C1] focus:border-[rgb(22,22,59)]"
-                  >
-                    <option value="">Select Type</option>
-                    <option value="job">Job</option>
-                    <option value="Internship">Internship</option>
-                  </select>
-                  <label>Location:</label>
-                  <input
-                    type="text"
-                    name="location"
-                    value={formData.location}
-                    onChange={handleInputChange}
-                    placeholder="Enter Job Location"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Date:</label>
-                  <input
-                    type="date"
-                    name="jobDate"
-                    value={formData.jobDate}
-                    onChange={handleInputChange}
-                  />
-                </div>
               </div>
-            </div>
-            <div className="job-desc">
-              <label>Job Description:</label>
-              <ReactQuill
-                value={formData.description}
-                onChange={handleDescriptionChange}
-                placeholder="Enter Job Description"
-                className="job-description"
-                theme="snow"
-              />
-            </div>
+              <div className="job-name">
+                <label>Job Title:</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  placeholder="Enter Job Title"
+                />
+              </div>
+              <div className="job-des-loc">
+                <label>Type:</label>
+                <select
+                  name="type"
+                  value={formData.type}
+                  onChange={handleInputChange}
+                  className="flex-1 py-1 px-2 border-b-2 border-[#215669C1] rounded-md bg-transparent text-[rgb(22,22,59)] focus:outline-none placeholder-[#215669C1] focus:border-[rgb(22,22,59)]"
+                >
+                  <option value="">Select Type</option>
+                  <option value="job">Job</option>
+                  <option value="Internship">Internship</option>
+                </select>
+                <label>Location:</label>
+                <input
+                  type="text"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  placeholder="Enter Job Location"
+                />
 
+                <label>Date:</label>
+                <input
+                  type="date"
+                  name="jobDate"
+                  value={formData.jobDate}
+                  onChange={handleInputChange}
+                />
+              </div>
+          </div>
+          <div className="job-desc">
+            <label>Job Description:</label>
+            <ReactQuill
+              value={formData.description}
+              onChange={handleDescriptionChange}
+              placeholder="Enter Job Description"
+              className="job-description"
+              theme="snow"
+            />
+          </div>
+          <div className="post-next-button">
             <button className="next-button" onClick={handleNext}>
               Next
             </button>
           </div>
-        )}
-
+        </div>
 
         {step === 2 && (
           <div className="popup">
             <div className="popup-content">
-              <button className="close-btn" onClick={() => setShowPopup(false)}>
+              <button className="close-btn z-50" onClick={() => setShowPopup(false)}>
                 ×
               </button>
               <div className="popup-header">
@@ -407,10 +413,37 @@ const PostsPage = () => {
                 />
               </div> */}
 
+              {showEligibleStudents && (
+                <div className="eligible-students-list">
+                  <h3 className="font-bold text-[17px]">Eligible Students :</h3>
+                  <ul className=" p-[10px]">
+                    {eligibleStudents.map((student) => (
+                      <li key={student._id} className="px-4 py-2 mb-3 bg-[#ffffff3e] backdrop:blur-[5px] border-[1px] rounded-[12px] border-[rgba(60,118,138,0.37)] shadow-lg">
+                        <div>
+                          <strong>Name:</strong> {student.profile.firstName}{" "}
+                          {student.profile.lastName}
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <div>
+                            <strong>Branch:</strong> {student.profile.branch}
+                          </div>
+                          <div>
+                            <strong>Session:</strong> {student.profile.session}
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <div className="filter-actions">
+                <button onClick={handleShowEligibleStudents}>Show</button>
                 <button onClick={clearFilters}>Clear</button>
-                <button onClick={handleSubmit} disabled={loading}>
-                  {" "}
+                <button
+                  onClick={handleSubmit}
+                  disabled={loading || !showEligibleStudents}
+                >
                   {loading ? "Creating..." : "Apply"}
                 </button>
               </div>

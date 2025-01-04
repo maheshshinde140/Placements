@@ -162,7 +162,7 @@ export const fetchUserById = async (req, res) => {
 
     // Fetch the user by ID and populate necessary fields
     const user = await User.findById(userId)
-      .populate("college", "name") // Populating the college name
+      .populate("college", "name address subscription") // Populating the college name
       .populate("profile.appliedJobsHistory.jobId", "title company location type description logo"); // Populating job history with job details
 
     if (!user) {

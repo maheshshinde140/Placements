@@ -110,18 +110,14 @@ export const updateRoundResults = createAsyncThunk(
 // Thunk for updating the job logo
 export const updateLogo = createAsyncThunk(
   "jobs/updateLogo",
-  async ({ jobId, logoFile }, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      // FormData to handle file uploads
-      const formData = new FormData();
-      formData.append("logo", logoFile);
-
+      const jobId = formData.get("jobId"); // Extract jobId from FormData
       const response = await axiosInstance.put(`/jobs/${jobId}/logo`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Required for file uploads
         },
       });
-
       return response.data; // Response with updated logo URL
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to update logo.");
