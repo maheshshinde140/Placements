@@ -95,7 +95,6 @@ export const loginUser = async (req, res) => {
     res.cookie('mpsp', token, { 
       httpOnly: true, 
       secure: process.env.NODE_ENV === 'production',  
-      sameSite: "Strict" 
     });
 
     res.status(200).json({ message: "Login successful", user: { id: user._id, role: user.role, token } });

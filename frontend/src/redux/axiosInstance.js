@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie"; // Import Cookies for secure token handling
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api", // Use environment variable or fallback // placements-zrea.onrender.com
+  baseURL: process.env.REACT_APP_API_BASE_URL || "https://placements-zrea.onrender.com/api", // Use environment variable or fallback
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -12,14 +12,13 @@ const axiosInstance = axios.create({
 // Add an interceptor to attach the token to every request
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("mpsp"); // Get token from cookies
+    const token = Cookies.get("mpsp") || localStorage.getItem("mpsp");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
   (error) => {
-    // Handle request errors
     return Promise.reject(error);
   }
 );

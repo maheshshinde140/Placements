@@ -13,8 +13,7 @@ export const loginUser = createAsyncThunk(
       // Store token securely using Cookies.set
       Cookies.set("mpsp", mpsp, {
         path: "/",
-        secure: process.env.NODE_ENV === "production", // Ensure the cookie is sent only over HTTPS
-        sameSite: "Strict", // Prevent cross-site usage
+        secure: process.env.NODE_ENV === "production", // Ensure the cookie is sent only over HTTPS // Prevent cross-site usage
         expires: 7, // Optional: Token expires in 7 days
       });
 
