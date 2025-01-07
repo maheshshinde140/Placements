@@ -15,6 +15,7 @@ export const loginUser = createAsyncThunk(
         path: "/",
         secure: process.env.NODE_ENV === "production", // Ensure the cookie is sent only over HTTPS // Prevent cross-site usage
         expires: 7, // Optional: Token expires in 7 days
+        sameSite: "None" 
       });
 
       return response.data;

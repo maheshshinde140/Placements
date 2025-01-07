@@ -31,7 +31,7 @@ const Sidebar = () => {
    // Debounced function to fetch profile completion details
    const debouncedFetchDetails = debounce(() => {
     dispatch(getProfileCompletionDetails());
-  }, 5000);
+  }, 50);
 
   useEffect(() => {
     if (token && profileCompletionDetails.length === 0) {

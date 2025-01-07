@@ -7,12 +7,19 @@ import { GiProgression } from "react-icons/gi";
 import { RiContactsFill } from "react-icons/ri";
 import { HiOutlineLogout } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserById, logoutUser, resetState, getProfileCompletionDetails } from "../../redux/userSlice";
-import {jwtDecode} from "jwt-decode";
-import tnp from '../../assets/sopu.jpeg';
+import {
+  fetchUserById,
+  logoutUser,
+  resetState,
+  getProfileCompletionDetails,
+} from "../../redux/userSlice";
+import { jwtDecode } from "jwt-decode";
+import tnp from "../../assets/sopu.jpeg";
 
 const Navigation = () => {
-  const { token, user, profileCompletionDetails } = useSelector((state) => state.user);
+  const { token, user, profileCompletionDetails } = useSelector(
+    (state) => state.user
+  );
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,28 +56,24 @@ const Navigation = () => {
 
   return (
     <div className="sticky top-0 flex flex-col w-[30%] max-w-[420px] min-w-[220px] min-h-screen h-[100vh] bg-[#002146] text-white p-3">
-      <img src="/harit.png" alt="College logo" className="mt-2 w-full h-auto mb-4" />
+      <img
+        src="/harit.png"
+        alt="College logo"
+        className="mt-2 w-full h-auto mb-3"
+      />
 
-      <NavLink
-        to="/tadmin/profile"
-        className={({ isActive }) =>
-          `flex flex-col items-center justify-center gap-2 p-6 mt-6 rounded-lg ${
-            isActive ? "border-b-2 border-gray-400" : ""
-          } hover:bg-gray-500/30`
-        }
-      >
-        <header className="relative p-4 flex flex-col items-center gap-2">
-          <div className="w-20 h-20 rounded-full text-[#dddddd]">
-            <img
-              src={tnp}
-              alt="user-img"
-              className="w-full h-full rounded-full object-cover"
-            />
-          </div>
-          <span className="text-2xl font-extrabold text-[#dddddd]">{ "T&P Head"}</span>
-        </header>
-      </NavLink>
-
+      <header className="relative p-4 flex flex-col items-center gap-2">
+        <div className="w-20 h-20 rounded-full text-[#dddddd]">
+          <img
+            src={tnp}
+            alt="user-img"
+            className="w-full h-full rounded-full object-cover"
+          />
+        </div>
+        <span className="text-2xl font-extrabold text-[#dddddd]">
+          {"T&P Head"}
+        </span>
+      </header>
       <nav>
         <NavLink
           to="/tadmin/dashboard"
@@ -130,17 +133,17 @@ const Navigation = () => {
       </nav>
 
       <div className=" w-[92%] absolute bottom-5 justify-items-center text-start">
-      <p className="text-xs my-3">
-            Made by <span className="text-red-500">❤️</span>{" "}
-            <span className="text-xs font-bold">Harit Tech Solution</span>
-          </p>
+        <p className="text-xs my-3">
+          Made by <span className="text-red-500">❤️</span>{" "}
+          <span className="text-xs font-bold">Harit Tech Solution</span>
+        </p>
         <button
           onClick={handleLogout}
           className="w-[80%] flex items-center justify-center gap-5 px-5 py-2 text-lg font-bold text-gray-300 bg-gray-500/20 rounded-lg hover:bg-gray-500/30"
         >
           Log Out <HiOutlineLogout />
         </button>
-         </div>
+      </div>
     </div>
   );
 };
