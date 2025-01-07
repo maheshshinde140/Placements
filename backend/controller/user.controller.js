@@ -92,10 +92,10 @@ export const loginUser = async (req, res) => {
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
 
-    res.cookie('token', token, { 
+    res.cookie('mpsp', token, { 
       httpOnly: true, 
       secure: process.env.NODE_ENV === 'production',  
-      sameSite: "Strict" 
+      sameSite: "None" 
     });
 
     res.status(200).json({ message: "Login successful", user: { id: user._id, role: user.role, token } });
@@ -107,7 +107,7 @@ export const loginUser = async (req, res) => {
 
 // Logout User
 export const logoutUser = (req, res) => {
-  res.cookie("token", "", {
+  res.cookie("mpsp", "", {
     httpOnly: true,
     expires: new Date(0),
   });

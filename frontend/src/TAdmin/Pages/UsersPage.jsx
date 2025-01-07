@@ -202,7 +202,7 @@ function Users() {
                   >
                     <td className="flex items-center gap-2 p-3 border border-[#cdd9e1bc]">
                       <img src={user.profile?.profilePic} alt="img" className="w-10 h-10 mr-3 object-cover text-center font-semibold text-sm transition-all border-gray-300 hover:bg-opacity-20 hover:backdrop-blur-sm hover:bg-white text-red-400 rounded-3xl shadow-sm" />
-                      {`${user.profile?.firstName || ""} ${user.profile?.lastName || ""}`}
+                      {`${user.profile?.firstName || ""} ${user.profile?.lastName || "New User"}`}
                     </td>
                     <td className="p-3 border border-[#cdd9e1bc]">
                       {user.profile?.collegeID || "N/A"}

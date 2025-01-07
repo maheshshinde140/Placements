@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -21,40 +21,59 @@ import { Internship } from "./Pages/home/Internship";
 import TAdminRoutes from "./Routes/TAdminRoutes";
 import { Toaster } from "react-hot-toast";
 
-
 function App() {
   const { token } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
+    const tokenFromCookies = Cookies.get("mpsp") || token;
     if (window.location.pathname !== "/login") {
-      const tokenFromCookies = Cookies.get("mpsp") || token;
       if (tokenFromCookies) {
         try {
           const decoded = jwtDecode(tokenFromCookies);
-          if (decoded.role === "student") {
-            document.body.style.backgroundColor = "rgb(22, 22, 59)";
-          } else if (decoded.role === "global_admin") {
-            document.body.style.backgroundColor = "rgb(26, 32, 44)";
+          // Check if token is expired
+          if (decoded.exp * 1000 < Date.now()) {
+            Cookies.remove("mpsp");
+            window.location.href = "/login";
+          } else {
+            // Set background color based on role
+            if (decoded.role === "student") {
+              document.body.style.backgroundColor = "rgb(22, 22, 59)";
+            } else if (decoded.role === "global_admin") {
+              document.body.style.backgroundColor = "rgb(26, 32, 44)";
+            }
           }
         } catch (error) {
           console.error("Error decoding token:", error);
+          Cookies.remove("mpsp");
+          window.location.href = "/login";
         }
       } else {
-        document.body.style.backgroundColor = "rgb(22, 22, 59)";
+        document.body.style.backgroundColor = "rgba(255, 255, 255, 0)";
       }
     }
+    setLoading(false); // Set loading to false after checks
   }, [token]);
 
   const ProtectedRoute = ({ children, allowedRoles }) => {
     const tokenFromCookies = Cookies.get("mpsp") || token;
     if (!tokenFromCookies) return <Navigate to="/login" />;
+
     try {
       const decoded = jwtDecode(tokenFromCookies);
+      // Check if token is expired
+      if (decoded.exp * 1000 < Date.now()) {
+        Cookies.remove("mpsp");
+        return <Navigate to="/login" />;
+      }
+      // Check if user role is allowed
       if (allowedRoles.includes(decoded.role)) {
         return children;
       }
     } catch (error) {
       console.error("Error decoding token:", error);
+      Cookies.remove("mpsp");
+      return <Navigate to="/login" />;
     }
     return <Navigate to="/login" />;
   };
@@ -64,22 +83,33 @@ function App() {
     if (tokenFromCookies) {
       try {
         const decoded = jwtDecode(tokenFromCookies);
-        if (decoded && decoded.role) {
+        // Check if token is expired
+        if (decoded.exp * 1000 < Date.now()) {
+          Cookies.remove("mpsp");
+          return "/login";
+        }
+        // Validate role and return appropriate route
+        if (decoded && decoded.role && ["student", "global_admin", "tnp_admin"].includes(decoded.role)) {
           if (decoded.role === "student") return "/";
           else if (decoded.role === "global_admin") return "/gadmin/dashboard";
           else if (decoded.role === "tnp_admin") return "/tadmin/dashboard";
         }
       } catch (error) {
         console.error("Error decoding token:", error);
+        Cookies.remove("mpsp");
       }
     }
     return "/login";
   };
 
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state
+  }
+
   return (
     <Router>
-      <Toaster/>
-            <Routes>
+      <Toaster />
+      <Routes>
         <Route
           path="/login"
           element={
@@ -109,7 +139,7 @@ function App() {
             <ProtectedRoute allowedRoles={["student", "tnp_admin", "global_admin"]}>
               <div className="flex">
                 <Sidebar />
-                <main className="flex-1 bg-[#A3B5C0] p-6 rounded-l-3xl">
+                <main className="flex-1 bg-gray-200 p-6 rounded-l-3xl">
                   <Job />
                 </main>
               </div>
@@ -122,7 +152,7 @@ function App() {
             <ProtectedRoute allowedRoles={["student", "tnp_admin", "global_admin"]}>
               <div className="flex">
                 <Sidebar />
-                <main className="flex-1 bg-[#A3B5C0] p-6 rounded-l-3xl">
+                <main className="flex-1 bg-gray-200 p-6 rounded-l-3xl">
                   <JobDetails />
                 </main>
               </div>
@@ -135,7 +165,7 @@ function App() {
             <ProtectedRoute allowedRoles={["student", "tnp_admin", "global_admin"]}>
               <div className="flex">
                 <Sidebar />
-                <main className="flex-1 bg-[#A3B5C0] p-6 rounded-l-3xl">
+                <main className="flex-1 bg-gray-200 p-6 rounded-l-3xl">
                   <Internship />
                 </main>
               </div>
@@ -148,7 +178,7 @@ function App() {
             <ProtectedRoute allowedRoles={["student", "tnp_admin", "global_admin"]}>
               <div className="flex">
                 <Sidebar />
-                <main className="flex-1 bg-[#A3B5C0] p-6 rounded-l-3xl">
+                <main className="flex-1 bg-gray-200 p-6 rounded-l-3xl">
                   <Notification />
                 </main>
               </div>
@@ -177,7 +207,7 @@ function App() {
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
-          </Router>
+    </Router>
   );
 }
 
