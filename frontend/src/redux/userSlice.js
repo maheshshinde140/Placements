@@ -8,10 +8,10 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.post("/auth/login", { email, password });
-      const { token } = response.data.user;
+      const { mpsp } = response.data.user;
 
       // Store token securely using Cookies.set
-      Cookies.set("mpsp", token, {
+      Cookies.set("mpsp", mpsp, {
         path: "/",
         secure: process.env.NODE_ENV === "production", // Ensure the cookie is sent only over HTTPS
         sameSite: "Strict", // Prevent cross-site usage

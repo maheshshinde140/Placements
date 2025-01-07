@@ -5,6 +5,7 @@ import { fetchUserById, logoutUser, resetState, getProfileCompletionDetails } fr
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import debounce from "lodash.debounce";
 
 const Sidebar = () => {
   const { token, user, profileCompletionDetails } = useSelector((state) => state.user); // Use profileCompletionDetails from Redux state
@@ -27,12 +28,20 @@ const Sidebar = () => {
     }
   }, [token, dispatch, user?.profile]); // Dependency array now includes user.profile to avoid re-fetching if already available
 
+   // Debounced function to fetch profile completion details
+   const debouncedFetchDetails = debounce(() => {
+    dispatch(getProfileCompletionDetails());
+  }, 5000);
+
   useEffect(() => {
-    // Fetch profile completion details if not already present
-    if (profileCompletionDetails.length === 0) {
-      dispatch(getProfileCompletionDetails());
+    if (token && profileCompletionDetails.length === 0) {
+      debouncedFetchDetails();
     }
-  }, [dispatch, profileCompletionDetails]);
+  
+    return () => {
+      debouncedFetchDetails.cancel();
+    };
+  }, [dispatch, profileCompletionDetails, debouncedFetchDetails, token]);
 
   const handleLogout = async () => {
     try {
@@ -48,7 +57,7 @@ const Sidebar = () => {
   const profileCompletion = profileCompletionDetails?.profileCompletion || 0; // Default to 0 if not available
 
   return (
-    <div className=" sticky top-0 flex w-84 flex-col  bg-transparent text-[rgb(192,192,192)] h-[120vh]">
+    <div className=" sticky top-0 flex w-84 flex-col  bg-transparent text-[rgb(192,192,192)] h-[125vh]">
       <div className="p-4">
         <img
           src="/harit.png"
@@ -156,7 +165,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="mt-auto p-4">
+      <div className=" p-4">
         {/* circle */}
         <div className="px-3 py-4 bg-transparent justify-start items-start">
           <p className="text-xs">

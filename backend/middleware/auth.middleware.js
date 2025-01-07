@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const protect = async (req, res, next) => {
-  const token = req.cookies?.token;
+  const token = req.cookies?.mpsp;
 
   if (!token) {
     console.log("No token found");  // Debugging line

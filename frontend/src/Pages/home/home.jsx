@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchUserById,
@@ -57,22 +57,38 @@ function Home() {
   const [profilePic, setProfilePic] = useState(null); // State for profile picture
   const [uploadProgress, setUploadProgress] = useState(0);
   const [loading, setLoading] = useState(false);
+  const debounceTimeout = useRef(null); // Ref to store the timeout ID
 
   useEffect(() => {
     if (token && !user?.profile) {
-      setLoading(true); // Set loading to true before fetching
-      try {
-        const decoded = jwtDecode(token);
-        const userId = decoded.id;
-        dispatch(fetchUserById(userId)).then(() => {
-          setLoading(false); // Set loading to false after fetching
-        });
-      } catch (error) {
-        console.error("Error decoding token", error);
-        setLoading(false); // Ensure loading is false on error
+      // Clear the previous timeout if it exists
+      if (debounceTimeout.current) {
+        clearTimeout(debounceTimeout.current);
       }
+
+      // Set a new timeout with a delay (e.g., 500ms)
+      debounceTimeout.current = setTimeout(() => {
+        setLoading(true);
+        try {
+          const decoded = jwtDecode(token);
+          const userId = decoded.id;
+          dispatch(fetchUserById(userId)).then(() => {
+            setLoading(false);
+          });
+        } catch (error) {
+          console.error("Error decoding token", error);
+          setLoading(false);
+        }
+      }, 5000); // 500ms delay
     }
-  }, [token, dispatch, user?.profile]);
+
+    // Cleanup function to clear the timeout on unmount or dependency change
+    return () => {
+      if (debounceTimeout.current) {
+        clearTimeout(debounceTimeout.current);
+      }
+    };
+  }, [token, dispatch, user?.profile]); 
 
   useEffect(() => {
     if (user?.profile) {
