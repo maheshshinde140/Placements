@@ -22,6 +22,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'https://tnpportal.harittech.in',
+  'https://placements-wyru.vercel.app',
 ];
 
 app.use(cors({
