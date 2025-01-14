@@ -250,7 +250,9 @@ export function JobData() {
             />
           )}
         </div>
-        <div className="relative">
+
+
+        {/* <div className="relative">
           <button
             onClick={toggleNotifications}
             className="p-2 hover:bg-gray-100 rounded-full transition-all duration-300"
@@ -259,7 +261,7 @@ export function JobData() {
           </button>
           {isNotificationOpen && (
             <div className="absolute right-0 mt-8 w-80  bg-[#ffffff8a] backdrop-blur-[6px] border border-gray-200 rounded-lg shadow-lg z-50">
-              {/* Notification Dropdown Content */}
+              
               <div className="flex justify-between items-center p-4 bg-[#3e79a7] text-white rounded-t-lg">
                 <h2 className="font-bold text-lg">Notifications</h2>
                 <button
@@ -267,7 +269,7 @@ export function JobData() {
                   className=" px-[10px] py-[4px] rounded-full hover:bg-[#919191a5] transition-all"
                 >
                   ✕
-                </button>
+              </button>
               </div>
               <div className="divide-y divide-neutral-200 max-h-96 overflow-y-auto">
                 {notifications.map((notification, index) => (
@@ -309,7 +311,7 @@ export function JobData() {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* Job Cards */}

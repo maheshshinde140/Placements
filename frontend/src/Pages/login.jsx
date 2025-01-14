@@ -68,7 +68,7 @@ const Login = () => {
           <img
             src={harit}
             alt="Harit Tech Logo"
-            className="h-20 w-[200px] mr-4"
+            className="h-20 w-[200px] mr-4 object-fill rounded-[20px]"
           />
         </div>
       </header>

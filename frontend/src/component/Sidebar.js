@@ -16,6 +16,8 @@ import { VscFeedback } from "react-icons/vsc";
 import { RiFeedbackLine } from "react-icons/ri";
 import { FaRankingStar } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
+import collage from '../assets/collage.png';
+import { MdEventAvailable, MdWork } from "react-icons/md";
 
 const Sidebar = () => {
   const { token, user, profileCompletionDetails } = useSelector(
@@ -68,7 +70,7 @@ const Sidebar = () => {
     <>
       {/* Small Screen Sidebar */}
       {/* Small Screen Sidebar */}
-      <div className="lg:hidden fixed top-0 left-0 z-50 w-16 h-full bg-[#002146] backdrop-filter backdrop-blur-md text-[rgb(192,192,192)]">
+      <div className="lg:hidden sticky top-0 left-0 z-50 w-16 h-screen bg-[#002146b7] backdrop-blur-sm text-[rgb(192,192,192)]">
         <div className="p-2">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -102,7 +104,7 @@ const Sidebar = () => {
               location.pathname === "/job" ? "border-b-2 border-white" : ""
             }`}
           >
-            <Briefcase className="h-5 w-5" />
+            <MdWork  className="h-5 w-5" />
           </NavLink>
           <NavLink
             to="/event"
@@ -110,9 +112,9 @@ const Sidebar = () => {
               location.pathname === "/event" ? "border-b-2 border-white" : ""
             }`}
           >
-            <Bell className="h-5 w-5" />
+            <MdEventAvailable  className="h-5 w-5" />
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/highlight"
             className={`flex items-center justify-center w-12 h-12 rounded-lg hover:bg-white/ 10 ${
               location.pathname === "/highlight"
@@ -121,7 +123,7 @@ const Sidebar = () => {
             }`}
           >
             <Bell className="h-5 w-5" />
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/notify"
             className={`flex items-center justify-center w-12 h-12 rounded-lg hover:bg-white/10 ${
@@ -134,7 +136,7 @@ const Sidebar = () => {
         <div className="absolute bottom-0  w-full p-2">
           <button
             onClick={handleLogout}
-            className="flex w-full items-center hover:bg-red-800 justify-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/20"
+            className="flex w-full items-center hover:bg-red-600 justify-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/20"
           >
             <LogOut className="h-4 w-4" />
           </button>
@@ -147,13 +149,13 @@ const Sidebar = () => {
           isSidebarOpen ? "block" : "hidden"
         }`}
       >
-        <div className="p-4">
+        <div className="p-4 mt-3">
           <img
-            src="/harit.png"
+            src={collage}
             alt="College logo"
             width={300}
             height={80}
-            className="mb-8"
+            className="mb-8 w-[340px]"
           />
           <div className="text-white p-2 rounded-lg flex items-center space-x-4">
             <img
