@@ -111,6 +111,8 @@ const FeedbackPage = () => {
       .catch((err) => toast.error(err || "Failed to send message."));
   };
 
+  
+
   return (
     <div className="relative flex flex-col flex-1 min-h-screen bg-[#A3B5C0] rounded-l-[35px]">
       <h1 className="text-[28px] font-bold p-2 mt-5 mb-3 ml-7 text-[rgb(22,22,59)]">
