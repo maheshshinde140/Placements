@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEligibleJobs } from "../../redux/jobSlice"; // Adjust the path as necessary
 import { Link } from "react-router-dom"; // Import Link
 import { ChevronDown, SlidersHorizontal, Search, BellRing } from "lucide-react";
+import Loading from "../../component/Loading";
 
 export function JobData() {
   const dispatch = useDispatch();
@@ -108,7 +109,7 @@ export function JobData() {
 
       {/* Job Cards */}
       {loading ? (
-        <div className="text-center text-gray-600">Loading...</div>
+        <div className="text-center text-gray-600"><Loading /></div>
       ) : error ? (
         <div className="text-center text-red-600">Error: {error.message}</div>
       ) : (

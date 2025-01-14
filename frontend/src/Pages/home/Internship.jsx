@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEligibleJobs } from "../../redux/jobSlice"; // Adjust the path as necessary
 import { Link } from "react-router-dom"; // Import Link
 import { ChevronDown, SlidersHorizontal, Search, BellRing } from "lucide-react";
+import Loading from "../../component/Loading";
 
 export function Internship() {
   const dispatch = useDispatch();
@@ -108,13 +109,13 @@ export function Internship() {
 
       {/* Job Cards */}
       {loading ? (
-        <div className="text-center text-gray-600">Loading...</div>
+        <div className="text-center text-gray-600"><Loading/></div>
       ) : error ? (
         <div className="text-center text-red-600">Error: {error.message}</div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2">
           {jobs
-            .filter((job) => job.type === "job")
+            .filter((job) => job.type === "Internship")
             .map((job) => (
               <div
                 key={job._id}
